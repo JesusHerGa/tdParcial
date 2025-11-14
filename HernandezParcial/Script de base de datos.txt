@@ -1,0 +1,47 @@
+---mongodb---
+use db_usuario;
+
+// Crear colección usuario si no existe
+db.createCollection("usuario");
+
+// Insertar documentos
+db.usuario.insertMany([
+    { idUsuario: 1, nombre: "admin", clave: "123456" },
+    { idUsuario: 2, nombre: "juan", clave: "pass123" },
+    { idUsuario: 3, nombre: "maria", clave: "abc123" }
+]);
+
+---postgres---
+CREATE TABLE IF NOT EXISTS public.producto (
+    id_producto SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio NUMERIC(12,2) NOT NULL
+);
+INSERT INTO public.producto
+( nombre, precio)
+VALUES( 'jesus ', 20000.00);
+
+---mysql----
+CREATE DATABASE IF NOT EXISTS db_operacion;
+USE db_operacion;
+
+-- Crear la tabla 'operacion'
+CREATE TABLE IF NOT EXISTS operacion (
+    id_operacion VARCHAR(36) NOT NULL PRIMARY KEY,
+    id_cliente INT,
+    tipo_operacion VARCHAR(50),
+    total DOUBLE
+);
+
+-- Insertar 10 registros con datos cambiados
+INSERT INTO operacion (id_operacion, id_cliente, tipo_operacion, total) VALUES
+(UUID(), 101, 'COMPRA', 520.75),
+(UUID(), 23,  'VENTA', 89.99),
+(UUID(), 17,  'COMPRA', 1340.20),
+(UUID(), 8,   'VENTA', 410.45),
+(UUID(), 45,  'COMPRA', 260.10),
+(UUID(), 12,  'VENTA', 970.00),
+(UUID(), 33,  'COMPRA', 720.50),
+(UUID(), 51,  'VENTA', 640.30),
+(UUID(), 19,  'COMPRA', 154.80),
+(UUID(), 76,  'VENTA', 2500.00);

@@ -1,0 +1,3 @@
+MsProducto - http://localhost:86/api/productos/update/
+MsUsuarios - http://localhost:85/api/usuario/login
+MsOperacion -  http://localhost:87/api/operacion/registrar

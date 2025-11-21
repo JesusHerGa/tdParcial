@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.HernandezServicios.ms.Operacion.constans.mensajes;
 import com.HernandezServicios.ms.Operacion.model.OperacionModel;
 import com.HernandezServicios.ms.Operacion.repository.IOperacionRepository;
 
@@ -21,16 +22,16 @@ public class OperacionService  implements IOperacionService {
     @SuppressWarnings("null")
     @Override
     public OperacionModel Registrar(OperacionModel operacionModel) {
-        logger.info("Iniciando proceso de registro en base de datos");
-        logger.debug("Operación - Tipo: {}, Cliente ID: {}, Total: {}", 
+        logger.info(mensajes.SRV_INICIO_REGISTRO);
+        logger.debug(mensajes.SRV_DEBUG_DATOS, 
                 operacionModel.getTipoOperacion(), 
                 operacionModel.getIdCliente(), 
                 operacionModel.getTotal());
         
         OperacionModel saved = operacionRepositoy.save(operacionModel);
         
-        logger.info("Operación guardada exitosamente en base de datos con ID: {}", saved.getIdOperacion());
-        logger.debug("Operación completada");
+        logger.info(mensajes.SRV_INFO_GUARDADO_OK, saved.getIdOperacion());
+        logger.debug(mensajes.SRV_DEBUG_FIN);
         
         return saved;
     }

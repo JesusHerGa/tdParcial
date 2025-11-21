@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.HernandezServicios.ms.Operacion.constans.ApiRoutes;
 import com.HernandezServicios.ms.Operacion.dto.OperacionRequest;
+import com.HernandezServicios.ms.Operacion.dto.OperacionResponse;
+import com.HernandezServicios.ms.Operacion.mapper.OperacionMapper;
 import com.HernandezServicios.ms.Operacion.model.OperacionModel;
 import com.HernandezServicios.ms.Operacion.service.IOperacionService;
 
@@ -28,21 +30,19 @@ public class OperacionController {
         Logger logger = LoggerFactory.getLogger(OperacionController.class);
 
         @PostMapping(ApiRoutes.Operacion.REGISTRAR)
-        public ResponseEntity<?> registrar(@RequestBody OperacionRequest request) {
+        public ResponseEntity<OperacionResponse> registrar(@RequestBody OperacionRequest request) {
                 logger.info("Iniciando registro de operación");
                 logger.debug("Tipo de operación: {}, Cliente ID: {}, Total: {}", 
                         request.getTipoOperacion(), request.getIdCliente(), request.getTotal());
                 
-                OperacionModel model = new OperacionModel(
-                                request.getTipoOperacion(),
-                                request.getIdCliente(),
-                                request.getTotal());
+                OperacionModel model = OperacionMapper.toModel(request);
                 
                 logger.debug("Modelo creado, enviando a servicio para guardarlo");
-                model = operacionServicec.Registrar(model);
+                OperacionModel saved = operacionServicec.Registrar(model);
                 
-                logger.info("Operación registrada exitosamente con ID: {}", model.getIdOperacion());
-                return new ResponseEntity<>(model, HttpStatus.CREATED);
+                logger.info("Operación registrada exitosamente con ID: {}", saved.getIdOperacion());
+                OperacionResponse response = OperacionMapper.toResponse(saved);
+                return new ResponseEntity<>(response, HttpStatus.CREATED);
         }
 
 }

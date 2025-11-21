@@ -21,7 +21,7 @@ public class SwaggerConfig {
                         .version("1.0.0")
                         .description("API del microservicio de Operacion"))
                 .servers(List.of(
-                        new Server().url("http://localhost:87").description("Microservicio Operacion")));
+                        new Server().url("http://localhost:81").description("Microservicio Operacion")));
 
     }
 }

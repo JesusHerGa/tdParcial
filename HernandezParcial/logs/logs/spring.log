@@ -1,4 +1,6 @@
-2025-11-13 23:04:13.846 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
+2025-11-20 19:37:44.347 ERROR [http-nio-85-exec-1] H.u.exception.GlobalExceptionHandler - [Global] ? Error no controlado: No static resource api/usuario/login.
+2025-11-20 19:47:37.931 ERROR [http-nio-85-exec-4] H.u.exception.GlobalExceptionHandler - [Global] ? Error no controlado: Request method 'GET' is not supported
+2025-11-20 19:48:13.093 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
 
 ***************************
 APPLICATION FAILED TO START
@@ -12,3 +14,19 @@ Action:
 
 Identify and stop the process that's listening on port 85 or configure this application to listen on another port.
 
+2025-11-20 19:49:15.288 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 85 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 85 or configure this application to listen on another port.
+
+2025-11-20 19:51:05.555 ERROR [http-nio-85-exec-2] H.u.exception.GlobalExceptionHandler - [Global] ? Error no controlado: Request method 'GET' is not supported
+2025-11-20 19:58:28.108 ERROR [http-nio-85-exec-8] H.u.exception.GlobalExceptionHandler - [Global] ? Error no controlado: Request method 'GET' is not supported
